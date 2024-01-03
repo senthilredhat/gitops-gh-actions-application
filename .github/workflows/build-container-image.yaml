@@ -87,8 +87,8 @@ jobs:
             workflow_id: 'update-container-image.yaml',
             ref: 'main',
             inputs: {
-              message: '${{ steps.git-message.outputs.message }}',
-              image: 'quay.io/rh_ee_sekumar/gitops-and-actions:sha-${{ steps.git-sha.outputs.sha }}',
-              sha: '${{ steps.git-sha.outputs.sha }}'
+              message: '${{ needs.git-message.outputs.message }}',
+              image: 'quay.io/rh_ee_sekumar/gitops-and-actions:sha-${{ needs.git-sha.outputs.sha }}',
+              sha: '${{ needs.git-sha.outputs.sha }}'
             }
           })
