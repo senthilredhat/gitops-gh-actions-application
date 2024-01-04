@@ -23,11 +23,11 @@ jobs:
 
     - name: Set output for Git short SHA
       id: git-sha
-      run: echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_STATE
+      run: echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
     - name: Fetch latest commit message
       id: git-message
-      run: echo "message=$(git log -1 --pretty=format:%s)" >> $GITHUB_STATE
+      run: echo "message=$(git log -1 --pretty=format:%s)" >> $GITHUB_OUTPUT
 
     - name: Use Node.js 18.x
       uses: actions/setup-node@v3
@@ -47,7 +47,7 @@ jobs:
 
     # Create a file containing the SHA for this commit in the root of the projects
     - name: Create file containing SHA
-      run: echo "${{ steps.git-sha.outputs.sha }}" > sha.txt
+      run: echo "$sha" > sha.txt
 
     # Build the container image
     - name: Build and push images to quay.io
