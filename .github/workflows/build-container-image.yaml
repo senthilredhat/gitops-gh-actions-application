@@ -47,7 +47,7 @@ jobs:
 
     # Create a file containing the SHA for this commit in the root of the projects
     - name: Create file containing SHA
-      run: echo "$sha" > sha.txt
+      run: echo "${{ steps.git-sha.outputs.sha }}" > sha.txt
 
     # Build the container image
     - name: Build and push images to quay.io
