@@ -9,5 +9,5 @@ test('example is loaded', async (t) => {
   const res = await app.inject({
     url: '/example'
   })
-  t.equal(res.payload, 'this is an example route. Change for demo')
+  t.equal(res.payload, 'this is an example route.')
 })
